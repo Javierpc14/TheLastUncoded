@@ -1,0 +1,105 @@
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    private CharacterController controller;
+
+    [Header ("Parámetros del Ratón")]
+    public float mouseSensitivity = 500f;
+    float xRotation = 0f;
+    float yRotation = 0f;
+    public float bottomClamp = 90f;
+    public float topClamp = -90f;
+
+    [Header("Parámetros de movimiento del Jugador")]
+    public float speed = 12f;
+    public float gravity = -9.81f * 2;
+    public float jumpHeight = 3f;
+
+    [Header ("Detección del suelo")]
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
+    
+    Vector3 velocity;
+
+    bool isGrounded;
+    bool isMoving;
+
+    private Vector3 lastPosition = new Vector3(0f,0f, 0f);
+    void Start()
+    {
+        //Bloqueamos el cursor en el centro de la cámara
+        Cursor.lockState = CursorLockMode.Locked;
+
+        //Asignamos el controlador
+        controller = GetComponent<CharacterController>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        MouseMovement();
+        Movement();
+    }
+
+    void MouseMovement()
+    {
+        //Detectamos los inputs
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        //Rotamos la camara
+        xRotation -= mouseY;
+        yRotation += mouseX;
+
+        //Limitamos la rotacion para que no de vuelta completas mas alla del eje X
+        xRotation = Mathf.Clamp(xRotation, topClamp, bottomClamp);
+
+        //Aplicamos la rotacíon al personaje
+        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+    }
+    void Movement()
+    {
+        //Comprobamos si está en el suelo
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        //Reiniciamos la velocidad en el eje Y cada vez que toca suelo
+        if (isGrounded && velocity.y < 0) 
+        {
+            velocity.y = -2f;
+        }
+
+        //Detectamos los inputs
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        //Guardamos los inputs en un vector
+        Vector3 move = transform.right * x + transform.forward * z;
+
+        //Movemos el jugador
+        controller.Move(move * speed * Time.deltaTime);
+
+        //Si el jugador está en el suelo puede saltar
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            //Iniciar el salto
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
+        //Velocidad de caída
+        velocity.y += gravity * Time.deltaTime;
+
+        //Control del salto
+        controller.Move(velocity * Time.deltaTime);
+
+        if (lastPosition != gameObject.transform.position && isGrounded == true)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+    }
+}
