@@ -58,6 +58,10 @@ public class PlayerMovement : MonoBehaviour
 
         //Aplicamos la rotacíon al personaje
         transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        /*
+        Al aplicar la rotacion vertical al personaje mueve hitbox y el groundCheck
+        ¿Aplicar horizontal a personaje y vertical solo al arma?
+        */
     }
     void Movement()
     {
