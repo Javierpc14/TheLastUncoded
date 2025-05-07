@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
+    public Transform scope;
 
     [Header ("Parámetros del Ratón")]
     public float mouseSensitivity = 500f;
@@ -57,7 +58,10 @@ public class PlayerMovement : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, topClamp, bottomClamp);
 
         //Aplicamos la rotacíon al personaje
-        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        //transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+
+        transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+        scope.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         /*
         Al aplicar la rotacion vertical al personaje mueve hitbox y el groundCheck
         ¿Aplicar horizontal a personaje y vertical solo al arma?
