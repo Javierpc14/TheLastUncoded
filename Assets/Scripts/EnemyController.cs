@@ -14,8 +14,12 @@ public class EnemyController : MonoBehaviour
     private int enemigosPorOleada;
     private bool isSpawning = false;
 
+    
+
     private void Start() {
         StartWaves();
+        // para la animacion cuando este
+        // ani = GetComponent<Animator>();
     }
 
     private void StartWaves(){
