@@ -3,20 +3,21 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
+    public Transform scope;
 
-    [Header ("Parámetros del Ratón")]
+    [Header ("Parï¿½metros del Ratï¿½n")]
     public float mouseSensitivity = 500f;
     float xRotation = 0f;
     float yRotation = 0f;
     public float bottomClamp = 90f;
     public float topClamp = -90f;
 
-    [Header("Parámetros de movimiento del Jugador")]
+    [Header("Parï¿½metros de movimiento del Jugador")]
     public float speed = 12f;
     public float gravity = -9.81f * 2;
     public float jumpHeight = 3f;
 
-    [Header ("Detección del suelo")]
+    [Header ("Detecciï¿½n del suelo")]
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
@@ -29,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 lastPosition = new Vector3(0f,0f, 0f);
     void Start()
     {
-        //Bloqueamos el cursor en el centro de la cámara
+        //Bloqueamos el cursor en el centro de la cï¿½mara
         Cursor.lockState = CursorLockMode.Locked;
 
         //Asignamos el controlador
@@ -41,6 +42,13 @@ public class PlayerMovement : MonoBehaviour
     {
         MouseMovement();
         Movement();
+    }
+
+    // para que colisione con el arma del enemigo
+    private void OnTriggerEnter(Collider other) {
+        if(other.CompareTag("arma")){
+            Debug.Log("el prota ha recibido dano");
+        }   
     }
 
     void MouseMovement()
@@ -56,16 +64,19 @@ public class PlayerMovement : MonoBehaviour
         //Limitamos la rotacion para que no de vuelta completas mas alla del eje X
         xRotation = Mathf.Clamp(xRotation, topClamp, bottomClamp);
 
-        //Aplicamos la rotacíon al personaje
-        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        //Aplicamos la rotacï¿½on al personaje
+        //transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+
+        transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+        scope.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         /*
         Al aplicar la rotacion vertical al personaje mueve hitbox y el groundCheck
-        ¿Aplicar horizontal a personaje y vertical solo al arma?
+        ï¿½Aplicar horizontal a personaje y vertical solo al arma?
         */
     }
     void Movement()
     {
-        //Comprobamos si está en el suelo
+        //Comprobamos si estï¿½ en el suelo
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         //Reiniciamos la velocidad en el eje Y cada vez que toca suelo
@@ -84,14 +95,14 @@ public class PlayerMovement : MonoBehaviour
         //Movemos el jugador
         controller.Move(move * speed * Time.deltaTime);
 
-        //Si el jugador está en el suelo puede saltar
+        //Si el jugador estï¿½ en el suelo puede saltar
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             //Iniciar el salto
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
-        //Velocidad de caída
+        //Velocidad de caï¿½da
         velocity.y += gravity * Time.deltaTime;
 
         //Control del salto
