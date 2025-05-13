@@ -8,8 +8,11 @@ public class AiEnemy : MonoBehaviour
     public float velocity;
     public NavMeshAgent IA;
 
+    public Animator anim;
+
     private void Start() {
         IA = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
         GameObject playerobj = GameObject.FindGameObjectWithTag("Player");
 
         if(playerobj != null){
@@ -22,6 +25,12 @@ public class AiEnemy : MonoBehaviour
             IA.speed = velocity;
             //el objetivo de nuestra ia es la posicion del player
             IA.SetDestination(player.position);
+
+            //velocidad para la animacion de correr
+            float currentSpeed = IA.velocity.magnitude;
+            Debug.Log("Speed: " + currentSpeed);
+            anim.SetFloat("speed", currentSpeed);
+            
         } 
     }
 }

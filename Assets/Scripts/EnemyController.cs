@@ -8,13 +8,10 @@ public class EnemyController : MonoBehaviour
     public GameObject enemy;
     public Transform[] spawnPoints;
     public float timeRounds = 10f;
-
     public int roundNumber = 1;
-
     private int enemigosPorOleada;
     private bool isSpawning = false;
 
-    
 
     private void Start() {
         StartWaves();
