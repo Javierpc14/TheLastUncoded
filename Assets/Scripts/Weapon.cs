@@ -30,7 +30,7 @@ public class Weapon : MonoBehaviour
 
     [Header ("Parametros de las armas")] //Al modificar estos podremos crear las distintas armas
     public float shootingDelay = 0.5f; //Retraso entre disparo
-    public int bulletsPerBurst = 3; //Cuantas balas se disparan al mismo tiempo en modo burst
+    public int bulletsPerBurst = 3; //Cuantas balas se disparan al mismo tiempo en modo burst (escopeta)
     public int burstBulletsLeft; //Cuantas balas quedan para disparar en modo burst
     public float spreadIntensity; //"Precision del arma"
     public float reloadTime; //Tiempo de recarga
@@ -65,7 +65,7 @@ public class Weapon : MonoBehaviour
         }
         
         //Limitamos disparar cuando no hay balas
-        if (readyToShoot && isShooting && bulletsLeft > 0)
+        if (readyToShoot && isShooting && (bulletsLeft  > 0) && isReloading == false)
         {
             burstBulletsLeft = bulletsPerBurst;
             FireWeapon();
@@ -75,19 +75,43 @@ public class Weapon : MonoBehaviour
 
     #region Dinamica de las Armas
     private void FireWeapon()
-        /*
-        Va a funcionar instanciando un objeto (bala) y dandole una fuerza hacia adelante para que salga disparada
-        Existe otra forma de hacerlo via Raycast, podemos preguntarle a Edu si quedaria mejor
-        */
+    /*
+    Va a funcionar instanciando un objeto (bala) y dandole una fuerza hacia adelante para que salga disparada
+    */
     {
-        //Disminuimos las balas en el cargador
-        bulletsLeft--; 
-
         readyToShoot = false;
 
+        if (currentShootingMode == ShootingMode.Burst && burstBulletsLeft > 0)
+        {
+            for (int i = 0; i < bulletsPerBurst && bulletsLeft > 0; i++)
+            {//He intentado seguir la lógica del siguiente código y adaptarlo al actual: https://discussions.unity.com/t/creating-a-shotgun/440919/2
+
+                //Disminuimos las balas en el cargador
+                bulletsLeft--;
+                ShootBullet();
+            }
+        }
+        else
+        {
+            //Disminuimos las balas en el cargador
+            bulletsLeft--;
+            ShootBullet();
+        }
+        
+        //Comprobamos si podemos seguir disparando
+        if (allowReset)
+        {
+            Invoke("ResetShot", shootingDelay);
+            allowReset = false;
+        }
+    }
+
+    //He sacado fuera el instanciar la bala dado que con la nueva lógica de la escopeta se repetiría código segun modo de disparo
+    private void ShootBullet()
+    {
         //Direccióna la que se dispara la bala
         Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
-        
+
         //Instanciamos la bala
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
 
@@ -102,19 +126,6 @@ public class Weapon : MonoBehaviour
 
         //Utilizamos una corutina para iniciar un temporizador pasado el cual se destruira la bala
         StartCoroutine(DestroyBulletAfterTime(bullet, bulletLifeTime));
-
-        //Comprobamos si podemos seguir disparando
-        if (allowReset)
-        {
-            Invoke("ResetShot", shootingDelay);
-            allowReset = false;
-        }
-
-        if (currentShootingMode == ShootingMode.Burst && burstBulletsLeft > 1) //Miramos si es mayor que 1 porque ya hemos disparado una
-        {
-            burstBulletsLeft--;
-            Invoke("FireWapon", shootingDelay);
-        }
     }
 
     private void Reload()
