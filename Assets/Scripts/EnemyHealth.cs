@@ -6,12 +6,28 @@ public class EnemyHealth : MonoBehaviour
     public int hits = 3;
     private int totalHits = 0;
 
- 
+    [Header("Efectos de sangre")]
+    public GameObject bloodEffect;
+    public Renderer enemyRenderer;
+    private Color originalColor;
+
+    void Start()
+    {
+        //aqui guardo el color original al empezar
+        originalColor = enemyRenderer.material.color;
+    }
 
     private void OnCollisionEnter(Collision other) {
         // al chocar con una bala
         if(other.gameObject.CompareTag("Bullet")){
             totalHits++;
+            
+            // aqui creo el efecto de la sangre en el punto exacto en el que colisiona la bala
+            ContactPoint contact = other.contacts[0];
+            Instantiate(bloodEffect, contact.point, Quaternion.identity);
+
+            //esto cambia el color a rojo
+            StartCoroutine(Damage());
 
             //para destruir la bala al colisionar
             Destroy(other.gameObject);
@@ -23,5 +39,10 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    private System.Collections.IEnumerator Damage(){
+        enemyRenderer.material.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        enemyRenderer.material.color = originalColor;
+    }
     
 }

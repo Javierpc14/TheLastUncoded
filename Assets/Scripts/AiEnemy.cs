@@ -28,7 +28,6 @@ public class AiEnemy : MonoBehaviour
 
             //velocidad para la animacion de correr
             float currentSpeed = IA.velocity.magnitude;
-            Debug.Log("Speed: " + currentSpeed);
             anim.SetFloat("speed", currentSpeed);
             
         } 
