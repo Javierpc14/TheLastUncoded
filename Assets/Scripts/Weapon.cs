@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     bool allowReset = true;
     public int bulletsLeft; //balas que quedan en el cargador
     public bool isReloading;
+    Animator animator;
     public enum ShootingMode
     {
         Single,
@@ -23,6 +24,9 @@ public class Weapon : MonoBehaviour
     public Transform bulletSpawn; //Desde donde aparecera la bala
     public Camera playerCamera;
     public TextMeshProUGUI ammoDisplay; //UI de la municion
+    public GameObject muzzleEffect; //Efecto de luz al disparar
+    public AudioManager audioManager;
+    
 
     [Header ("Parametros Bala")]
     public float bulletSpeed = 30;
@@ -42,6 +46,7 @@ public class Weapon : MonoBehaviour
         readyToShoot = true;
         burstBulletsLeft = bulletsPerBurst;
         bulletsLeft = maxBulletNum;
+        animator = GetComponent<Animator> ();//Tomamos el animator local como referencia
     }
     void Update()
     {
@@ -109,6 +114,18 @@ public class Weapon : MonoBehaviour
     //He sacado fuera el instanciar la bala dado que con la nueva lógica de la escopeta se repetiría código segun modo de disparo
     private void ShootBullet()
     {
+        //Reproducimos el sonido del disparo
+
+        if (currentShootingMode == ShootingMode.Single)
+        {
+            audioManager.PlaySFX(audioManager.pistolShot);
+        }
+        //Activamos el efecto de luz al disparar
+        muzzleEffect.GetComponent<ParticleSystem>().Play();
+
+        //Iniciamos la animacion de disparo
+        animator.SetTrigger("Recoil");
+
         //Direccióna la que se dispara la bala
         Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
 
@@ -132,6 +149,12 @@ public class Weapon : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && (bulletsLeft < maxBulletNum) && isReloading == false)
         {
+            //Reproducimos el sonido de recarga
+
+            if (currentShootingMode == ShootingMode.Single)
+            {
+                audioManager.PlaySFX(audioManager.pistolReload);
+            }
             isReloading = true;
             Invoke("ReloadCompleted", reloadTime);
         }
