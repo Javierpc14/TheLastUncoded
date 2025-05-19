@@ -21,6 +21,11 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+
+    [Header ("Variables de Vida")]
+    public int maxVida = 5;
+    public int vidaActual;
+    public DamageEffect damageEffect;
     
     Vector3 velocity;
 
@@ -35,6 +40,9 @@ public class PlayerMovement : MonoBehaviour
 
         //Asignamos el controlador
         controller = GetComponent<CharacterController>();
+
+        //inicializo la vida actual a la vida maxima
+        vidaActual = maxVida;
     }
 
     // Update is called once per frame
@@ -48,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("arma")){
             Debug.Log("el prota ha recibido dano");
+            RecibirDanio(1);
         }   
     }
 
@@ -116,5 +125,21 @@ public class PlayerMovement : MonoBehaviour
         {
             isMoving = false;
         }
+    }
+
+    public void RecibirDanio(int cantidad){
+        vidaActual -= cantidad;
+
+        //esto sube en 0.2 la intensidad de la imagen roja de danio
+        damageEffect.AddDamageEffect(0.4f);
+
+        if (vidaActual <= 0)
+        {
+            Morir();
+        }
+    }
+
+    void Morir(){
+        Debug.Log("¡El jugador ha muerto!");
     }
 }
