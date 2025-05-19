@@ -119,6 +119,39 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &6160846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6160847}
+  m_Layer: 0
+  m_Name: Camera's
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6160847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6160846}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.1710005, y: 1.8284853, z: -57.857132}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 147329972}
+  - {fileID: 1461836482}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6270872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 73ee42fd074ea0f4ab876528dd9fd9c5, type: 3}
@@ -300,104 +333,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5e5885cd51c8fa3419fd83251b256c81, type: 3}
   m_PrefabInstance: {fileID: 15349465}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &17484410
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 17484413}
-  - component: {fileID: 17484412}
-  - component: {fileID: 17484411}
-  m_Layer: 0
-  m_Name: CinemachineCamera (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!95 &17484411
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17484410}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aaf4aa38fe1461c448dbb6ee6e9b59a6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &17484412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17484410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Priority:
-    Enabled: 0
-    m_Value: 0
-  OutputChannel: 1
-  StandbyUpdate: 2
-  m_StreamingVersion: 20241001
-  m_LegacyPriority: 0
-  Target:
-    TrackingTarget: {fileID: 0}
-    LookAtTarget: {fileID: 0}
-    CustomLookAtTarget: 0
-  Lens:
-    FieldOfView: 60.000004
-    OrthographicSize: 5
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
-    Dutch: 0
-    ModeOverride: 0
-    PhysicalProperties:
-      GateFit: 2
-      SensorSize: {x: 21.946, y: 16.002}
-      LensShift: {x: 0, y: 0}
-      FocusDistance: 10
-      Iso: 200
-      ShutterSpeed: 0.005
-      Aperture: 16
-      BladeCount: 5
-      Curvature: {x: 2, y: 11}
-      BarrelClipping: 0.25
-      Anamorphism: 0
-  BlendHint: 0
---- !u!4 &17484413
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17484410}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.109587505, y: 0.005065336, z: -0.0005585196, w: -0.99396414}
-  m_LocalPosition: {x: -8.613453, y: 1.887891, z: -2.954084}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &19057077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1070,7 +1005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0025024414, y: -270}
+  m_AnchoredPosition: {x: 0.0024414062, y: -270}
   m_SizeDelta: {x: 0.005004883, y: 540}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &77189402
@@ -1659,12 +1594,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147329971}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.1, y: 2.29722, z: -59.687965}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.0710001, y: 0.46873474, z: -1.8308334}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 6160847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &147329973
 MonoBehaviour:
@@ -2482,7 +2417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 269323665}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -7976,7 +7911,7 @@ GameObject:
   - component: {fileID: 954819126}
   - component: {fileID: 954819128}
   - component: {fileID: 954819127}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MuzzleFlashEffect (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15362,7 +15297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1211172522}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -16035,6 +15970,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f959618a8fbf1f249be3fd6173690879, type: 3}
   m_PrefabInstance: {fileID: 1290077348}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1299384582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1299384583}
+  - component: {fileID: 1299384584}
+  m_Layer: 0
+  m_Name: WeaponRenderCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1299384583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299384582}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1461836482}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1299384584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299384582}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Priority:
+    Enabled: 0
+    m_Value: 0
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 0}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 70
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
 --- !u!1001 &1299669875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17020,7 +17030,7 @@ GameObject:
   - component: {fileID: 1461836484}
   - component: {fileID: 1461836485}
   m_Layer: 0
-  m_Name: CinemachineCamera
+  m_Name: PlayerCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17078,11 +17088,12 @@ Transform:
   m_GameObject: {fileID: 1461836480}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.1, y: 2.29722, z: -59.687965}
+  m_LocalPosition: {x: 1.0710001, y: 0.46873474, z: -1.8308334}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
+  m_Children:
+  - {fileID: 1299384583}
+  m_Father: {fileID: 6160847}
   m_LocalEulerAnglesHint: {x: -1.777, y: -8.588, z: 0.268}
 --- !u!114 &1461836484
 MonoBehaviour:
@@ -17522,7 +17533,7 @@ GameObject:
   - component: {fileID: 1480149099}
   - component: {fileID: 1480149098}
   - component: {fileID: 1480149102}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17575,6 +17586,8 @@ MonoBehaviour:
   spreadIntensity: 0.4
   reloadTime: 2
   maxBulletNum: 80
+  totalAmmo: 0
+  maxTotalAmmo: 320
   currentShootingMode: 2
 --- !u!65 &1480149099
 BoxCollider:
@@ -18208,7 +18221,7 @@ GameObject:
   - component: {fileID: 1572327299}
   - component: {fileID: 1572327301}
   - component: {fileID: 1572327300}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MuzzleFlashEffect (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28630,7 +28643,7 @@ GameObject:
   - component: {fileID: 1711813855014237668}
   - component: {fileID: 3469287837732946224}
   - component: {fileID: 3469287837732946223}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28651,7 +28664,7 @@ GameObject:
   - component: {fileID: 5717033340800817219}
   - component: {fileID: 8443405706484858068}
   - component: {fileID: 8443405706484858069}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28890,6 +28903,8 @@ MonoBehaviour:
   spreadIntensity: 0
   reloadTime: 2
   maxBulletNum: 12
+  totalAmmo: 0
+  maxTotalAmmo: 60
   currentShootingMode: 0
 --- !u!4 &3589035361523608797
 Transform:
@@ -28916,7 +28931,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3589035361523608797}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -29021,7 +29036,7 @@ GameObject:
   - component: {fileID: 5802944936757508804}
   - component: {fileID: 5924882954853379022}
   - component: {fileID: 5928139144409763916}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MuzzleFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33806,7 +33821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1518848911229888932}
   - component: {fileID: 6695278897606679960}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Scope
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -33939,7 +33954,9 @@ MonoBehaviour:
   burstBulletsLeft: 0
   spreadIntensity: 10
   reloadTime: 2
-  maxBulletNum: 80
+  maxBulletNum: 20
+  totalAmmo: 0
+  maxTotalAmmo: 80
   currentShootingMode: 1
 --- !u!95 &8443405706484858069
 Animator:
@@ -34012,15 +34029,13 @@ MeshRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 147329972}
+  - {fileID: 6160847}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1600241539}
   - {fileID: 37464016}
   - {fileID: 1380300859}
   - {fileID: 1723775571}
-  - {fileID: 1461836482}
-  - {fileID: 17484413}
   - {fileID: 1794931008}
   - {fileID: 1753088275}
   - {fileID: 4604195418625441187}

@@ -38,7 +38,9 @@ public class Weapon : MonoBehaviour
     public int burstBulletsLeft; //Cuantas balas quedan para disparar en modo burst
     public float spreadIntensity; //"Precision del arma"
     public float reloadTime; //Tiempo de recarga
-    public int maxBulletNum; //Balas en el cargador
+    public int maxBulletNum; //Balas por cargador
+    public int totalAmmo; //Numero total de balas
+    public int maxTotalAmmo; //Numero maximo de balas a llevar
     public ShootingMode currentShootingMode; //Tipo de disparo (ej: escopeta deberia tener burst y rifle automatic
     
     private void Awake()
@@ -46,6 +48,7 @@ public class Weapon : MonoBehaviour
         readyToShoot = true;
         burstBulletsLeft = bulletsPerBurst;
         bulletsLeft = maxBulletNum;
+        totalAmmo = maxTotalAmmo;
         animator = GetComponent<Animator> ();//Tomamos el animator local como referencia
     }
     void Update()
@@ -148,7 +151,7 @@ public class Weapon : MonoBehaviour
 
     private void Reload()
     {
-        if (Input.GetKeyDown(KeyCode.R) && (bulletsLeft < maxBulletNum) && isReloading == false)
+        if (Input.GetKeyDown(KeyCode.R) && (bulletsLeft < maxBulletNum) && isReloading == false && totalAmmo > 0)
         {
             //Reproducimos el sonido de recarga
 
@@ -163,7 +166,13 @@ public class Weapon : MonoBehaviour
 
     private void ReloadCompleted()
     {
-        bulletsLeft = maxBulletNum;
+        int bulletsNeeded = maxBulletNum - bulletsLeft; //numero de balas totales a cargar (tiene en cuenta las que ya tiene el cargador)
+        int bulletsToLoad = Mathf.Min(bulletsNeeded, totalAmmo); //calculo de las balas a cargar
+
+        //Actualizamos las balas
+        bulletsLeft += bulletsToLoad;
+        totalAmmo -= bulletsToLoad;
+
         isReloading = false;
     }
 
@@ -224,7 +233,7 @@ public class Weapon : MonoBehaviour
 
     void DisplayAmmo()
     {
-        ammoDisplay.text = $"{bulletsLeft / bulletsPerBurst}/{maxBulletNum / bulletsPerBurst}";
+        ammoDisplay.text = $"{bulletsLeft / bulletsPerBurst}/{totalAmmo / bulletsPerBurst}";
     }
 
     #endregion
