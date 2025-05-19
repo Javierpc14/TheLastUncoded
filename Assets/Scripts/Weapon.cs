@@ -53,6 +53,7 @@ public class Weapon : MonoBehaviour
         Shot();
         Reload();
         DisplayAmmo();
+        Aim();
     }
 
     #region Cuando se dispara
@@ -204,6 +205,18 @@ public class Weapon : MonoBehaviour
         //Una vez pasado el tiempo indicado (delay) pasara a la siguiente linea y destruira la bala
         yield return new WaitForSeconds(delay);
         Destroy(bullet);
+    }
+
+    private void Aim()
+    {
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            animator.SetTrigger("Aim");
+        }
+        else
+        {
+            animator.SetTrigger("Idle");
+        }
     }
     #endregion
 
