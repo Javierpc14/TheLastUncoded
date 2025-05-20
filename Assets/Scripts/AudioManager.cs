@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Clio")]
     public AudioClip pistolShot;
     public AudioClip pistolReload;
+    //public AudioClip backgroundMusic;
 
     //Metodo para reproducir la musico o efectos
     public void PlaySFX(AudioClip clip)
