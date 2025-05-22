@@ -16443,6 +16443,7 @@ MonoBehaviour:
   readyToShoot: 0
   bulletsLeft: 0
   isReloading: 0
+  playerMovement: {fileID: 8069648071966932002}
   bulletPrefab: {fileID: 888528575144399954, guid: d59166d829543924398eaa776a615ba6, type: 3}
   bulletSpawn: {fileID: 269323665}
   playerCamera: {fileID: 147329975}
@@ -27103,6 +27104,7 @@ MonoBehaviour:
   readyToShoot: 0
   bulletsLeft: 0
   isReloading: 0
+  playerMovement: {fileID: 8069648071966932002}
   bulletPrefab: {fileID: 888528575144399954, guid: d59166d829543924398eaa776a615ba6, type: 3}
   bulletSpawn: {fileID: 1211172522}
   playerCamera: {fileID: 147329975}
@@ -32155,6 +32157,7 @@ MonoBehaviour:
   readyToShoot: 0
   bulletsLeft: 0
   isReloading: 0
+  playerMovement: {fileID: 8069648071966932002}
   bulletPrefab: {fileID: 888528575144399954, guid: d59166d829543924398eaa776a615ba6, type: 3}
   bulletSpawn: {fileID: 3589035361523608797}
   playerCamera: {fileID: 147329975}

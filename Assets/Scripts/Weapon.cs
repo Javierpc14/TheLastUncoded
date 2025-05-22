@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
     public int bulletsLeft; //balas que quedan en el cargador
     public bool isReloading;
     Animator animator;
+    public PlayerMovement playerMovement;
     public enum ShootingMode
     {
         Single,
@@ -218,6 +219,7 @@ public class Weapon : MonoBehaviour
 
     private void Aim()
     {
+        //float actualMovement = PlayerMovement.speed;
         if (Input.GetKey(KeyCode.Mouse1))
         {
             animator.SetTrigger("Aim");
