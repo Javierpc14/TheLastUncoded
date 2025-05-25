@@ -37,13 +37,17 @@ public class Weapon : MonoBehaviour
     public float shootingDelay = 0.5f; //Retraso entre disparo
     public int bulletsPerBurst = 3; //Cuantas balas se disparan al mismo tiempo en modo burst (escopeta)
     public int burstBulletsLeft; //Cuantas balas quedan para disparar en modo burst
-    public float spreadIntensity; //"Precision del arma"
+    public float spreadIntensity; //"Precision del arma". A mayor menor precision
     public float reloadTime; //Tiempo de recarga
     public int maxBulletNum; //Balas por cargador
     public int totalAmmo; //Numero total de balas
     public int maxTotalAmmo; //Numero maximo de balas a llevar
     public ShootingMode currentShootingMode; //Tipo de disparo (ej: escopeta deberia tener burst y rifle automatic
-    
+    //public int dmgPerBullet;
+    private float actualMovement;
+    private bool isAiming = false; //boleano que se utilizara en la logica de apuntar
+    private float actualSpread;
+
     private void Awake()
     {
         readyToShoot = true;
@@ -51,6 +55,8 @@ public class Weapon : MonoBehaviour
         bulletsLeft = maxBulletNum;
         totalAmmo = maxTotalAmmo;
         animator = GetComponent<Animator> ();//Tomamos el animator local como referencia
+        actualMovement = playerMovement.speed; //Velocidad mientras se apunta
+        actualSpread = spreadIntensity - (spreadIntensity / 4);
     }
     void Update()
     {
@@ -219,14 +225,28 @@ public class Weapon : MonoBehaviour
 
     private void Aim()
     {
-        //float actualMovement = PlayerMovement.speed;
+        
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            animator.SetTrigger("Aim");
+            if (!isAiming)
+            {
+                animator.SetTrigger("Aim");
+                playerMovement.speed = playerMovement.speed / 2;
+                spreadIntensity -= spreadIntensity/4;
+                isAiming = true;
+            }
+            
         }
         else
         {
-            animator.SetTrigger("Idle");
+            if (isAiming)
+            {
+                animator.SetTrigger("Idle");
+                playerMovement.speed = actualMovement;
+                spreadIntensity = actualSpread;
+                isAiming = false;
+            }
+            
         }
     }
     #endregion
