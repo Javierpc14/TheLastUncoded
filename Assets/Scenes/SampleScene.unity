@@ -37313,7 +37313,7 @@ MonoBehaviour:
   shootingDelay: 0.4
   bulletsPerBurst: 1
   burstBulletsLeft: 0
-  spreadIntensity: 0
+  spreadIntensity: 3
   reloadTime: 2
   maxBulletNum: 12
   totalAmmo: 0
