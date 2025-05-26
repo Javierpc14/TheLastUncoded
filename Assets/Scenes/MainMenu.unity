@@ -517,7 +517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.3, y: 0.107385196}
-  m_AnchoredPosition: {x: 48.69995, y: 116.200165}
+  m_AnchoredPosition: {x: 48.69995, y: 116.20021}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &213569461
@@ -567,10 +567,10 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 847630714}
+      - m_Target: {fileID: 1787323805}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: ActivateFullScreen
-        m_Mode: 6
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 847630714}
+      - m_Target: {fileID: 1787323805}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: ChangeSFXVolume
         m_Mode: 1
@@ -2378,7 +2378,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 847630714}
+      - m_Target: {fileID: 1787323805}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: AdjustQuality
         m_Mode: 1
@@ -2804,8 +2804,8 @@ MonoBehaviour:
   m_enableVertexGradient: 1
   m_colorMode: 2
   m_fontColorGradient:
-    topLeft: {r: 0.66666657, g: 0.6453557, b: 0.2368972, a: 1}
-    topRight: {r: 0.66666657, g: 0.6453557, b: 0.2368972, a: 1}
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 0, b: 0, a: 1}
     bottomRight: {r: 1, g: 0, b: 0, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
@@ -2878,7 +2878,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 847630713}
-  - component: {fileID: 847630714}
   m_Layer: 5
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -2909,30 +2908,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 34}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &847630714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847630712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 167bb74bd41b2904c9f69f67e93abfd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  masterVolumeSlider: {fileID: 2097544644}
-  musicVolumeSlider: {fileID: 1637845813}
-  sfxVolumeSlider: {fileID: 448231543}
-  mainAudioMixer: {fileID: 24100000, guid: 58e723e2ff14ffd46bae5597c6092ccc, type: 2}
-  brightSlider: {fileID: 1524302908}
-  bright: {fileID: 790369459}
-  toggle: {fileID: 213569461}
-  resolutionDropDown: {fileID: 1943453145}
-  qualityDropdown: {fileID: 764303393}
-  brightSliderValue: 0
-  sliderVolumeValue: 0
-  quality: 0
 --- !u!1 &847754900
 GameObject:
   m_ObjectHideFlags: 0
@@ -5293,7 +5268,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 847630714}
+      - m_Target: {fileID: 1787323805}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: ChangeBright
         m_Mode: 0
@@ -5568,7 +5543,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 847630714}
+      - m_Target: {fileID: 1787323805}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: ChangeMusicVolume
         m_Mode: 1
@@ -6359,6 +6334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1787323803}
   - component: {fileID: 1787323804}
+  - component: {fileID: 1787323805}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -6401,6 +6377,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 1.5
+--- !u!114 &1787323805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787323802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 167bb74bd41b2904c9f69f67e93abfd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterVolumeSlider: {fileID: 2097544644}
+  musicVolumeSlider: {fileID: 1637845813}
+  sfxVolumeSlider: {fileID: 448231543}
+  mainAudioMixer: {fileID: 24100000, guid: 58e723e2ff14ffd46bae5597c6092ccc, type: 2}
+  brightSlider: {fileID: 1524302908}
+  bright: {fileID: 790369459}
+  toggle: {fileID: 213569461}
+  resolutionDropDown: {fileID: 1943453145}
+  qualityDropdown: {fileID: 764303393}
+  brightSliderValue: 0
+  sliderVolumeValue: 0
+  quality: 0
 --- !u!1 &1824460410
 GameObject:
   m_ObjectHideFlags: 0
@@ -6958,7 +6958,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 847630714}
+      - m_Target: {fileID: 1787323805}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: ChangeResolution
         m_Mode: 0
@@ -8012,7 +8012,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 847630714}
+      - m_Target: {fileID: 1787323805}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: ChangeMasterVolume
         m_Mode: 1
@@ -8319,15 +8319,15 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4290427578
-  m_fontColor: {r: 0.7294118, g: 0.7294118, b: 0.7294118, a: 1}
+    rgba: 4278246143
+  m_fontColor: {r: 1, g: 0.85490197, b: 0, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 2
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 0.94509804, g: 0.03137255, b: 0.039215688, a: 1}
-    bottomRight: {r: 0.94509804, g: 0.03137255, b: 0.039215688, a: 1}
+    bottomLeft: {r: 1, g: 0.023529412, b: 0, a: 1}
+    bottomRight: {r: 1, g: 0.023529412, b: 0, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0

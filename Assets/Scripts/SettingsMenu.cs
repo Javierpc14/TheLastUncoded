@@ -37,8 +37,29 @@ public class SettingsMenu : MonoBehaviour
         qualityDropdown.value = quality;
         AdjustQuality();
 
-        //sliderVolume.value = PlayerPrefs.GetFloat("volumeAudio", 0.5f);
-        //AudioListener.volume = sliderVolume.value;
+        float masterVol = PlayerPrefs.GetFloat("MasterVol", 0.5f);
+        float musicVol = PlayerPrefs.GetFloat("MusicVol", 0.5f);
+        float sfxVol = PlayerPrefs.GetFloat("SFXVol", 0.5f);
+
+        masterVolumeSlider.value = masterVol;
+        musicVolumeSlider.value = musicVol;
+        sfxVolumeSlider.value = sfxVol;
+
+        
+        mainAudioMixer.SetFloat("MasterVol", masterVol);
+        mainAudioMixer.SetFloat("MusicVol", musicVol);
+        mainAudioMixer.SetFloat("SFXVol", sfxVol);
+
+        /*
+        masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVol", 0.5f);
+        mainAudioMixer.SetFloat("MasterVol", masterVolumeSlider.value);
+
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVol", 0.5f);
+        mainAudioMixer.SetFloat("MasterVol", musicVolumeSlider.value);
+
+        sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVol", 0.5f);
+        mainAudioMixer.SetFloat("MasterVol", sfxVolumeSlider.value);
+        */
 
         //Comprobamos si la casilla está marcada o no para activar la pantalla completa
         if (Screen.fullScreen)
@@ -55,16 +76,22 @@ public class SettingsMenu : MonoBehaviour
     
     public void ChangeMasterVolume()
     {
+        PlayerPrefs.SetFloat("MasterVol", masterVolumeSlider.value);
+        PlayerPrefs.Save(); //Guardamos la preferencia
         mainAudioMixer.SetFloat("MasterVol", masterVolumeSlider.value);
     }
 
     public void ChangeMusicVolume()
     {
+        PlayerPrefs.SetFloat("MusicVol", musicVolumeSlider.value);
+        PlayerPrefs.Save(); //Guardamos la preferencia
         mainAudioMixer.SetFloat("MusicVol", musicVolumeSlider.value);
     }
 
     public void ChangeSFXVolume()
     {
+        PlayerPrefs.SetFloat("SFXVol", sfxVolumeSlider.value);
+        PlayerPrefs.Save(); //Guardamos la preferencia
         mainAudioMixer.SetFloat("SFXVol", sfxVolumeSlider.value);
     }
 

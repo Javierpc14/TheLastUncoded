@@ -182,6 +182,10 @@ MonoBehaviour:
   hits: 3
   bloodEffect: {fileID: 1580213174690995699, guid: 65393348b065d6b45b1b3c1f60d35eff, type: 3}
   enemyRenderer: {fileID: 8758957445991513969}
+  weaponParent: {fileID: 0}
+  ammoDrops:
+  - {fileID: 6467948424868825184, guid: beab779d727cb5e41993ef85c9e29bf1, type: 3}
+  - {fileID: 8333404368919146504, guid: 02abad165631ec149b2a81f139e44c63, type: 3}
 --- !u!114 &8763839069822648064
 MonoBehaviour:
   m_ObjectHideFlags: 0
