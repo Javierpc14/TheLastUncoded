@@ -12,8 +12,12 @@ public class EnemyController : MonoBehaviour
     private int enemigosPorOleada;
     private bool isSpawning = false;
 
+    //para la stat de oleadas sobrevividas
+    public static int oleadasSobrevividas = 0;
 
-    private void Start() {
+
+    private void Start()
+    {
         StartWaves();
         // para la animacion cuando este
         // ani = GetComponent<Animator>();
@@ -49,9 +53,13 @@ public class EnemyController : MonoBehaviour
             Debug.Log("Oleada " + roundNumber + " comenzando");
 
             enemigosPorOleada = CalcularCantidadEnemigos(roundNumber);
+
+            //estadistica de oleadas que se ha sobrevivido
+            oleadasSobrevividas = roundNumber;
             
             //bucle for para generar todos los enemigos de la oleada con un tiempo de espera entre medias para que no salgan todos de golpe
-            for(int i = 0; i < enemigosPorOleada; i++){
+            for (int i = 0; i < enemigosPorOleada; i++)
+            {
                 SpawnearEnemigo();
 
                 // tiempo de espera entre enemigos

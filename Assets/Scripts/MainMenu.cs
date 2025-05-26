@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     public void PlayGame()
     {
-        StartCoroutine(LoadSceneDelay(1));
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitGame()

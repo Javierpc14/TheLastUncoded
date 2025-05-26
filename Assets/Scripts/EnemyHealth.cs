@@ -11,6 +11,9 @@ public class EnemyHealth : MonoBehaviour
     public Renderer enemyRenderer;
     private Color originalColor;
 
+    //para la estadistica de enemigos muertos
+    public static int enemigosMuertos = 0;
+
     void Start()
     {
         //aqui guardo el color original al empezar
@@ -34,6 +37,10 @@ public class EnemyHealth : MonoBehaviour
 
             // Si ha recibido todos los disparos, desaparece el enemigo
             if(totalHits >= hits){
+                //aumento el contador cuando mata un enemigo
+                enemigosMuertos++;
+
+                //destruyo el gameobject del enemigo cuando muere
                 Destroy(gameObject);
             }
         }

@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7824589812075171460, guid: 276ae6d687e4c604db06bf9071a22f0a, type: 3}
-  velocity: 9
+  velocity: 6
   IA: {fileID: 2150489832444639405}
   anim: {fileID: 6772099441028026649}
 --- !u!114 &7655139779595938022
