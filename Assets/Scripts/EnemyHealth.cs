@@ -49,17 +49,6 @@ public class EnemyHealth : MonoBehaviour
 
                 //suelta la municion
                 DropAmmo();
-                
-                /*
-                foreach (Transform child in weaponParent)
-                {
-                    if (child.gameObject.activeInHierarchy && child.name == "Pistol")
-                    {
-                        DropAmmo();
-                        break;
-                    }
-                }
-                */
 
                 //destruyo el gameobject del enemigo cuando muere
                 Destroy(gameObject);

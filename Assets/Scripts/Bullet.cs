@@ -20,8 +20,11 @@ public class Bullet : MonoBehaviour
         {
             CreateBulletImpactEffect(objectHit);
         }
-
-        Destroy(gameObject);
+        if (!objectHit.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(gameObject);
+        }
+        
     }
     //
     void CreateBulletImpactEffect(Collision objectHit)

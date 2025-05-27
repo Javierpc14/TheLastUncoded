@@ -10,7 +10,9 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Clio")]
     public AudioClip pistolShot;
     public AudioClip pistolReload;
+    public AudioClip rifleShot;
     public AudioClip backgroundMusic;
+
 
     void Start()
     {

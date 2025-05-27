@@ -102,10 +102,11 @@ public class Weapon : MonoBehaviour
             for (int i = 0; i < bulletsPerBurst && bulletsLeft > 0; i++)
             {//He intentado seguir la lógica del siguiente código y adaptarlo al actual: https://discussions.unity.com/t/creating-a-shotgun/440919/2
 
-                //Disminuimos las balas en el cargador
-                bulletsLeft--;
+                
+                
                 ShootBullet();
             }
+            bulletsLeft--;
         }
         else
         {
@@ -130,6 +131,10 @@ public class Weapon : MonoBehaviour
         if (currentShootingMode == ShootingMode.Single)
         {
             audioManager.PlaySFX(audioManager.pistolShot);
+        }
+        else if(currentShootingMode == ShootingMode.Automatic)
+        {
+            audioManager.PlaySFX(audioManager.rifleShot);
         }
         //Activamos el efecto de luz al disparar
         muzzleEffect.GetComponent<ParticleSystem>().Play();
@@ -165,6 +170,7 @@ public class Weapon : MonoBehaviour
             if (currentShootingMode == ShootingMode.Single)
             {
                 audioManager.PlaySFX(audioManager.pistolReload);
+                animator.SetTrigger("Reload");
             }
             isReloading = true;
             Invoke("ReloadCompleted", reloadTime);
@@ -255,7 +261,7 @@ public class Weapon : MonoBehaviour
 
     void DisplayAmmo()
     {
-        ammoDisplay.text = $"{bulletsLeft / bulletsPerBurst}/{totalAmmo / bulletsPerBurst}";
+        ammoDisplay.text = $"{bulletsLeft}/{totalAmmo}";
     }
 
     #endregion
