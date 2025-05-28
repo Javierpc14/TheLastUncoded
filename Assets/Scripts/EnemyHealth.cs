@@ -39,6 +39,10 @@ public class EnemyHealth : MonoBehaviour
             //esto cambia el color a rojo
             StartCoroutine(Damage());
 
+            AmmoManager ammoManager = other.gameObject.GetComponent<AmmoManager>();
+
+            bool isSingleMode = ammoManager != null && ammoManager.shootingMode == Weapon.ShootingMode.Single;
+
             //para destruir la bala al colisionar
             Destroy(other.gameObject);
 
@@ -48,7 +52,11 @@ public class EnemyHealth : MonoBehaviour
                 enemigosMuertos++;
 
                 //suelta la municion
-                DropAmmo();
+                if (isSingleMode)
+                {
+                    DropAmmo();
+                }
+                
 
                 //destruyo el gameobject del enemigo cuando muere
                 Destroy(gameObject);

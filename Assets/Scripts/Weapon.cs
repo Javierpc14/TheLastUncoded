@@ -154,6 +154,10 @@ public class Weapon : MonoBehaviour
         //Le damos la fuerza/empujamos hacia adelante
         bullet.GetComponent<Rigidbody>().AddForce(shootingDirection * bulletSpeed, ForceMode.Impulse);
 
+        AmmoManager ammoManager = bullet.AddComponent<AmmoManager>();
+
+        ammoManager.shootingMode = currentShootingMode;
+
         //shootingDirection es la direccion aplicamos bullet speed como fuerza, ForceMode es el tipo de fuerza,
         //en este caso utilizamos el tipo impulso
 
