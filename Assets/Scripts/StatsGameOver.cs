@@ -11,6 +11,8 @@ public class StatsGameOver : MonoBehaviour
 
     private void Start()
     {
+        //PlayerPrefs es una clase de unity que me permite pasar datos dentre escenas
+        //https://www.youtube.com/watch?v=jjLr0MFlZWQ
         //cargo los datos obtenidos en las otras clases
         int oleadas = PlayerPrefs.GetInt("Oleadas", 0);
         int enemigos = PlayerPrefs.GetInt("Enemigos", 0);
