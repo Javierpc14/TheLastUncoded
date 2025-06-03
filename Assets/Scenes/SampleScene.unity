@@ -2073,8 +2073,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147329971}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.010940562, z: 0, w: 0.9999402}
-  m_LocalPosition: {x: 1.0931435, y: 0.46873474, z: -1.8310776}
+  m_LocalRotation: {x: 0, y: 0.1477814, z: 0, w: 0.9890201}
+  m_LocalPosition: {x: 1.0437422, y: 0.46873474, z: 0.8083267}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6640,7 +6640,7 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.6
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -20948,7 +20948,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 2ff5ee4c160d2344a937d0bd3873301a, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &1149498732
 PrefabInstance:
@@ -24992,8 +24992,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1461836480}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.010940562, z: -0, w: 0.9999402}
-  m_LocalPosition: {x: 1.0931435, y: 0.46873474, z: -1.8310776}
+  m_LocalRotation: {x: 0, y: 0.1477814, z: -0, w: 0.9890201}
+  m_LocalPosition: {x: 1.0437422, y: 0.46873474, z: 0.8083267}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41345,8 +41345,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7186300529235176180}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.010940562, z: -0, w: 0.9999402}
-  m_LocalPosition: {x: -9.1, y: 2, z: -60.7}
+  m_LocalRotation: {x: -0, y: 0.1477814, z: -0, w: 0.9890201}
+  m_LocalPosition: {x: -9.423094, y: 2, z: -58.016636}
   m_LocalScale: {x: 1.4861, y: 1.4861, z: 1.4861}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41354,7 +41354,7 @@ Transform:
   - {fileID: 1518848911229888932}
   - {fileID: 8410725527741246921}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 1.254, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 16.997, z: 0}
 --- !u!1001 &4668909573392363296
 PrefabInstance:
   m_ObjectHideFlags: 0
