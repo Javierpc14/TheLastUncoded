@@ -137,6 +137,10 @@ public class Weapon : MonoBehaviour
         {
             audioManager.PlaySFX(audioManager.rifleShot);
         }
+        else
+        {
+            audioManager.PlaySFX(audioManager.shotgunShot);
+        }
         //Activamos el efecto de luz al disparar
         muzzleEffect.GetComponent<ParticleSystem>().Play();
 
@@ -180,6 +184,14 @@ public class Weapon : MonoBehaviour
             {
                 audioManager.PlaySFX(audioManager.pistolReload);
                 
+            }
+            else if (currentShootingMode == ShootingMode.Automatic)
+            {
+                audioManager.PlaySFX(audioManager.rifleReload);
+            }
+            else
+            {
+                audioManager.PlaySFX(audioManager.shotgunReload);
             }
             animator.SetTrigger("Reload");
             isReloading = true;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6125904026034478991}
   - component: {fileID: 8106691175489262265}
   - component: {fileID: 8746165259070231173}
-  - component: {fileID: 8084657630074921180}
+  - component: {fileID: 8958294467495147049}
   m_Layer: 0
   m_Name: BurstAmmo
   m_TagString: Untagged
@@ -132,7 +132,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8084657630074921180
+--- !u!114 &8958294467495147049
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,4 +145,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoMode: 1
-  ammoAmount: 2
+  ammoAmount: 6

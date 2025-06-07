@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -11,12 +12,31 @@ public class AudioManager : MonoBehaviour
     public AudioClip pistolShot;
     public AudioClip pistolReload;
     public AudioClip rifleShot;
+    public AudioClip rifleReload;
     public AudioClip backgroundMusic;
+    public AudioClip shotgunShot;
+    public AudioClip shotgunReload;
+    public AudioClip mainMenuMusic;
+    public AudioClip gameOverMusic;
+    public AudioClip buttonPlaySound;
+    public AudioClip genericButtonSound;
+    public AudioClip ammoUp;
 
 
     void Start()
     {
-        PlayMusic(backgroundMusic);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            PlayMusic(mainMenuMusic);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            PlayMusic(backgroundMusic);
+        }
+        else
+        {
+            PlayMusic(gameOverMusic);
+        }
     }
     
     //Metodo para reproducir la musico o efectos

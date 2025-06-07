@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 5a7aa125a11705449b1207306423627d, type: 2}
+  m_LightingDataAsset: {fileID: 112000002, guid: c482561641a25514791bf19c84125d92, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: dc601115a3a33c344b73fb52fba7425b, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -5864,7 +5864,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1147765474}
-  - {fileID: 957526778}
+  - {fileID: 543450652011003032}
   m_Father: {fileID: 1153806651}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &373569610 stripped
@@ -9843,6 +9843,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 738219975}
+        m_TargetAssemblyTypeName: PausarJuego, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &652787236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11174,7 +11186,7 @@ GameObject:
   - component: {fileID: 738219976}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: Untagged
+  m_TagString: Audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11196,7 +11208,15 @@ MonoBehaviour:
   pistolShot: {fileID: 8300000, guid: 2b5975e5651c69d42a9804f69b37a4f5, type: 3}
   pistolReload: {fileID: 8300000, guid: 38cd60a1d6f34db41a89c255006f7ff9, type: 3}
   rifleShot: {fileID: 8300000, guid: 660ad3fb047d947458bad2fe2803884f, type: 3}
+  rifleReload: {fileID: 8300000, guid: b411cf99519b8cd4e835485de994eb47, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 17235c0beb6ea1642b73f14fbcd28c78, type: 3}
+  shotgunShot: {fileID: 8300000, guid: 638d8433525f15c4bbf8c3cc37410cc1, type: 3}
+  shotgunReload: {fileID: 8300000, guid: 9fbb7ae4eb0b6354db4fbbe0a3f92ec8, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: 6a6a2fa2d73de9a4382fc6c7ba02734d, type: 3}
+  gameOverMusic: {fileID: 8300000, guid: 987608f0a0b982842ad70fbda8b317fa, type: 3}
+  buttonPlaySound: {fileID: 8300000, guid: 8b97b874cfbb379419b85f1a468e8409, type: 3}
+  genericButtonSound: {fileID: 8300000, guid: 8910205a8276ad94b9413b47f30c12d1, type: 3}
+  ammoUp: {fileID: 8300000, guid: b07750b87d5eee54391ae3e6b3da58cd, type: 3}
 --- !u!4 &738219977
 Transform:
   m_ObjectHideFlags: 0
@@ -18558,18 +18578,13 @@ MonoBehaviour:
   timeRounds: 10
   roundNumber: 1
   txtWave: {fileID: 458486756}
---- !u!1 &957526776 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 273ae917aaa6cec40a3c35e2147fa570, type: 3}
-  m_PrefabInstance: {fileID: 1689033587}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &957526777
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 957526776}
+  m_GameObject: {fileID: 919132147487450658}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -18584,11 +18599,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 480.4002, y: 332.59613, z: 0}
   m_Center: {x: 59.6421, y: -124.32237, z: 0}
---- !u!4 &957526778 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 273ae917aaa6cec40a3c35e2147fa570, type: 3}
-  m_PrefabInstance: {fileID: 1689033587}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &968255298 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f959618a8fbf1f249be3fd6173690879, type: 3}
@@ -40776,6 +40786,11 @@ Transform:
   - {fileID: 1211172522}
   m_Father: {fileID: 1518848911229888932}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: -85.412}
+--- !u!4 &543450652011003032 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 273ae917aaa6cec40a3c35e2147fa570, type: 3}
+  m_PrefabInstance: {fileID: 1689033587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &693853691779470127
 Transform:
   m_ObjectHideFlags: 0
@@ -40922,6 +40937,11 @@ MonoBehaviour:
   totalAmmo: 0
   maxTotalAmmo: 10
   currentShootingMode: 1
+--- !u!1 &919132147487450658 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 273ae917aaa6cec40a3c35e2147fa570, type: 3}
+  m_PrefabInstance: {fileID: 1689033587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919132147931452465
 GameObject:
   m_ObjectHideFlags: 0

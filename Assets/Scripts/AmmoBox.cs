@@ -2,21 +2,17 @@ using UnityEngine;
 
 public class AmmoBox : MonoBehaviour
 {
-    /*
-    He intentado gestionar externamente la municion con el script AmmoManagment adjuntado al padre de las armas (Scope), pero no ha ido bien
 
-    public int ammoAmount;
-    public AmmoType ammoType;
-
-    public enum AmmoType
-    {
-        AutoAmmo,
-        BurstAmmo
-    }
-    */
-
+    public AudioManager audioManager;// Para aplicar sonido
     public Weapon.ShootingMode ammoMode; //En el inspector asignaremos en el script para que modo de arma se añadira la municion
     public int ammoAmount; //municion que recuperara el arma
+
+    private void Start()
+    {
+        //Buscamos el objeto con Tag audio y obtenemos unicamente el script
+        audioManager = GameObject.FindWithTag("Audio").GetComponent<AudioManager>();
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         //Si el jugador colisiona con la municion
@@ -39,6 +35,7 @@ public class AmmoBox : MonoBehaviour
                 if (weapon.currentShootingMode == ammoMode)
                 {
                     weapon.totalAmmo = Mathf.Min(weapon.totalAmmo + ammoAmount, weapon.maxTotalAmmo);
+                    audioManager.PlaySFX(audioManager.ammoUp);
                     Destroy(gameObject);
                     break;
                 }
