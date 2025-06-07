@@ -5,6 +5,8 @@ using System;
 
 public class Bullet : MonoBehaviour
 {
+    public int damage;
+
     private void OnCollisionEnter(Collision objectHit)
     {
         /*
@@ -37,6 +39,5 @@ public class Bullet : MonoBehaviour
             );
 
         hole.transform.SetParent(objectHit.gameObject.transform);
-        Destroy(gameObject);
     }
 }

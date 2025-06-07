@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    // Disparos que necesita el enemigo para morir
-    public int hits = 3;
-    private int totalHits = 0;
+    // Vida del enemigo
+    public int maxHP = 100;
+    private int currentHP;
+    
 
     [Header("Efectos de sangre")]
     public GameObject bloodEffect;
@@ -25,12 +26,13 @@ public class EnemyHealth : MonoBehaviour
     {
         //aqui guardo el color original al empezar
         originalColor = enemyRenderer.material.color;
+        currentHP = maxHP;
     }
 
     private void OnCollisionEnter(Collision other) {
         // al chocar con una bala
         if(other.gameObject.CompareTag("Bullet")){
-            totalHits++;
+            
             
             // aqui creo el efecto de la sangre en el punto exacto en el que colisiona la bala
             ContactPoint contact = other.contacts[0];
@@ -43,11 +45,13 @@ public class EnemyHealth : MonoBehaviour
 
             bool isSingleMode = ammoManager != null && ammoManager.shootingMode == Weapon.ShootingMode.Single;
 
-            //para destruir la bala al colisionar
-            Destroy(other.gameObject);
+            Bullet bullet = other.gameObject.GetComponent<Bullet>();
+            int damage = bullet.damage;
+
+            currentHP -= damage;
 
             // Si ha recibido todos los disparos, desaparece el enemigo
-            if(totalHits >= hits){
+            if (currentHP <= 0){
                 //aumento el contador cuando mata un enemigo
                 enemigosMuertos++;
 
@@ -57,7 +61,6 @@ public class EnemyHealth : MonoBehaviour
                     DropAmmo();
                 }
                 
-
                 //destruyo el gameobject del enemigo cuando muere
                 Destroy(gameObject);
             }
@@ -76,4 +79,36 @@ public class EnemyHealth : MonoBehaviour
         int index = Random.Range(0, 2); //Elije un numero al azar entre 0 y 1. Al tener solo 2 objetos tendra un 50% de soltar cada tipo de municion
         Instantiate(ammoDrops[index], transform.position, Quaternion.identity); //instanciamos el objeto con la misma posicíon y rotacion
     }
+
+    //Metodo para que el enemigo reciba daño
+    /*
+    private void TakeDamage()
+    {
+        Bullet bullet = 
+        currentHP -= damage;
+        if (currentHP <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        AmmoManager ammoManager = other.gameObject.GetComponent<AmmoManager>();
+
+        bool isSingleMode = ammoManager != null && ammoManager.shootingMode == Weapon.ShootingMode.Single;
+
+        //aumento el contador cuando mata un enemigo
+        enemigosMuertos++;
+
+        //suelta la municion
+        if (isSingleMode)
+        {
+            DropAmmo();
+        }
+
+        //destruyo el gameobject del enemigo cuando muere
+        Destroy(gameObject);
+    }
+    */
 }

@@ -34,6 +34,7 @@ public class Weapon : MonoBehaviour
     public float bulletLifeTime = 3f; //Lo utilizaremos para eliminar la bala pasando el tiempo
 
     [Header ("Parametros de las armas")] //Al modificar estos podremos crear las distintas armas
+    public int damagePerBullet; //Daño por bala del arma
     public float shootingDelay = 0.5f; //Retraso entre disparo
     public int bulletsPerBurst = 3; //Cuantas balas se disparan al mismo tiempo en modo burst (escopeta)
     public int burstBulletsLeft; //Cuantas balas quedan para disparar en modo burst
@@ -102,8 +103,8 @@ public class Weapon : MonoBehaviour
             for (int i = 0; i < bulletsPerBurst && bulletsLeft > 0; i++)
             {//He intentado seguir la lógica del siguiente código y adaptarlo al actual: https://discussions.unity.com/t/creating-a-shotgun/440919/2
 
-                
-                
+
+
                 ShootBullet();
             }
             bulletsLeft--;
@@ -114,9 +115,9 @@ public class Weapon : MonoBehaviour
             bulletsLeft--;
             ShootBullet();
         }
-        
-        //Comprobamos si podemos seguir disparando
-        if (allowReset)
+
+            //Comprobamos si podemos seguir disparando
+            if (allowReset)
         {
             Invoke("ResetShot", shootingDelay);
             allowReset = false;
@@ -148,6 +149,10 @@ public class Weapon : MonoBehaviour
         //Instanciamos la bala
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
 
+        //Asignamos a la bala el valor del daño
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.damage = damagePerBullet;
+
         //Apuntamos la bala a la direccion de disparo
         bullet.transform.forward = shootingDirection;
 
@@ -167,15 +172,16 @@ public class Weapon : MonoBehaviour
 
     private void Reload()
     {
-        if (Input.GetKeyDown(KeyCode.R) && (bulletsLeft < maxBulletNum) && isReloading == false && totalAmmo > 0)
+        if (Input.GetKeyDown(KeyCode.R) && (bulletsLeft < maxBulletNum) && isReloading == false && (totalAmmo > 0 || currentShootingMode == ShootingMode.Single))
         {
             //Reproducimos el sonido de recarga
 
             if (currentShootingMode == ShootingMode.Single)
             {
                 audioManager.PlaySFX(audioManager.pistolReload);
-                animator.SetTrigger("Reload");
+                
             }
+            animator.SetTrigger("Reload");
             isReloading = true;
             Invoke("ReloadCompleted", reloadTime);
         }
@@ -186,9 +192,16 @@ public class Weapon : MonoBehaviour
         int bulletsNeeded = maxBulletNum - bulletsLeft; //numero de balas totales a cargar (tiene en cuenta las que ya tiene el cargador)
         int bulletsToLoad = Mathf.Min(bulletsNeeded, totalAmmo); //calculo de las balas a cargar
 
-        //Actualizamos las balas
-        bulletsLeft += bulletsToLoad;
-        totalAmmo -= bulletsToLoad;
+        if (currentShootingMode != ShootingMode.Single)
+        {
+            //Actualizamos las balas
+            bulletsLeft += bulletsToLoad;
+            totalAmmo -= bulletsToLoad;
+        }
+        else
+        {
+            bulletsLeft += bulletsToLoad; //Tan solo cargamos las balas si es la pistola
+        }
 
         isReloading = false;
     }
@@ -265,7 +278,19 @@ public class Weapon : MonoBehaviour
 
     void DisplayAmmo()
     {
-        ammoDisplay.text = $"{bulletsLeft}/{totalAmmo}";
+        ammoDisplay.richText = true;
+
+        if (currentShootingMode == ShootingMode.Single) 
+        {
+            ammoDisplay.text = $"{bulletsLeft}/\u221E"; //\u221E es el unicode para infinito
+                                                                                           //<voffset=5%>\u221E</voffset>  
+                                                                                           //y voffset es una etiqueta para para modificar el formato
+                                                                                           //En este caso levanta el símbolo un 5%  --> NO FUNCIONA
+        }
+        else
+        {
+            ammoDisplay.text = $"{bulletsLeft}/{totalAmmo}";
+        }
     }
 
     #endregion
