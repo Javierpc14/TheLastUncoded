@@ -31,7 +31,7 @@ public class SettingsMenu : MonoBehaviour
         brightSlider.value = PlayerPrefs.GetFloat("bright", 0.5f); //Iniciamos la primera vez con unos valores predeterminados,
                                                                    //luego utilizaremos la preferencia
 
-        bright.color = new Color(bright.color.r, bright.color.g, bright.color.b, brightSlider.value); //cambia la transparencia (4 valor) segun la barra
+        bright.color = new Color(bright.color.r, bright.color.g, bright.color.b, 1 - brightSlider.value); //cambia la transparencia (4 valor) segun la barra
 
         quality = PlayerPrefs.GetInt("qualityNumber", 3);
         qualityDropdown.value = quality;
@@ -98,9 +98,9 @@ public class SettingsMenu : MonoBehaviour
     public void ChangeBright(float value)
     {
         brightSliderValue = value;
-        PlayerPrefs.SetFloat("bright", brightSlider.value);
+        PlayerPrefs.SetFloat("bright", 1 - brightSlider.value);
         PlayerPrefs.Save(); //Guardamos la preferencia
-        bright.color = new Color(bright.color.r, bright.color.g, bright.color.b, brightSlider.value);
+        bright.color = new Color(bright.color.r, bright.color.g, bright.color.b, 1 - brightSlider.value);
     }
 
     public void AdjustQuality()

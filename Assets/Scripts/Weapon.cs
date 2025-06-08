@@ -195,6 +195,7 @@ public class Weapon : MonoBehaviour
             }
             animator.SetTrigger("Reload");
             isReloading = true;
+            animator.SetBool("isReloading", true);
             Invoke("ReloadCompleted", reloadTime);
         }
     }
@@ -216,6 +217,7 @@ public class Weapon : MonoBehaviour
         }
 
         isReloading = false;
+        animator.SetBool("isReloading", false);
     }
 
     //Con este metodo evitamos que se reinicie el disparo varias veces antes que transcurra el retraso entre disparos
@@ -265,7 +267,7 @@ public class Weapon : MonoBehaviour
         {
             if (!isAiming)
             {
-                animator.SetTrigger("Aim");
+                animator.SetBool("isAiming", true);
                 playerMovement.speed = playerMovement.speed / 2;
                 spreadIntensity -= spreadIntensity/4;
                 isAiming = true;
@@ -276,7 +278,7 @@ public class Weapon : MonoBehaviour
         {
             if (isAiming)
             {
-                animator.SetTrigger("Idle");
+                animator.SetBool("isAiming", false);
                 playerMovement.speed = actualMovement;
                 spreadIntensity = actualSpread;
                 isAiming = false;
